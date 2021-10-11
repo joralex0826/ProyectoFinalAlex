@@ -1,5 +1,5 @@
 <template>
-  <v-card class="overflow-hidden">
+  <v-card class="overflow-hidden" :elevation="0-1">
     <v-app-bar
       color="grey darken-3"
       dark
@@ -7,8 +7,9 @@
       prominent
       loading
       ligth
-      rounded
-      src="https://wallpapercave.com/wp/wp3396925.jpg"
+      flex
+      
+      src="https://github.com/joralex0826/Chambea/blob/main/bannerazul.png?raw=true"
       fade-img-on-scroll
       scroll-target="#scrolling-techniques-3"
     >
@@ -19,31 +20,27 @@
         ></v-img>
       </template>
 
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+     
       <v-spacer></v-spacer>
+      
+
+
+      
+
+
 
       <h1 class="display-2">
-      <v-app-bar-title>Periodico Noticias</v-app-bar-title>
+      <v-app-bar-title></v-app-bar-title>
       </h1>
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab>Iniciar Sesión</v-tab>
-          <v-tab @click="llamarRegistro()"> Registrarse</v-tab>
+          <v-tab @click="llamarInicio()" >Inicio</v-tab>
           <v-tab @click="llamarTabla()"> Productos </v-tab>
+          <v-tab @click="llamarCarrusel()"> Galeria </v-tab>
+          <v-tab @click="llamarRegistro()"> Registrarse</v-tab>
+          <v-tab @click="llamarConocenos()"> Conócenos </v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -59,15 +56,24 @@
 
 <script>
 export default {
-    data() {
-        
-    },
+    data: ()=> ({
+    }),
+   
     methods:{
         llamarRegistro() {
             this.$router.push('/registro')
         },
         llamarTabla() {
             this.$router.push('/tabla')
+        },
+        llamarInicio() {
+            this.$router.push('/inicio')
+        },
+        llamarCarrusel() {
+            this.$router.push('/carrusel')
+        },
+        llamarConocenos() {
+            this.$router.push('/conocenos')
         }
     }
 }

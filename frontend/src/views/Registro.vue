@@ -9,7 +9,7 @@
       v-model="name"
       :counter="10"
       :rules="nameRules"
-      label="Name"
+      label="Nombre"
       required
     ></v-text-field>
 
@@ -30,8 +30,8 @@
 
     <v-checkbox
       v-model="checkbox"
-      :rules="[v => !!v || 'You must agree to continue!']"
-      label="Do you agree?"
+      :rules="[v => !!v || 'Debes estar de acuerdo para continuar']"
+      label="¿Estás de acuerdo?"
       required
     ></v-checkbox>
 
@@ -41,7 +41,7 @@
       class="mr-4"
       @click="validate"
     >
-      Validate
+      Aceptar
     </v-btn>
 
     <v-btn
@@ -49,15 +49,10 @@
       class="mr-4"
       @click="reset"
     >
-      Reset Form
+      Resetear formulario
     </v-btn>
 
-    <v-btn
-      color="warning"
-      @click="resetValidation"
-    >
-      Reset Validation
-    </v-btn>
+ 
   </v-form>
 </v-container>
 </template>
@@ -80,10 +75,10 @@
       ],
       select: null,
       items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
+        'Suscripción 1 mes',
+        'Suscripción 6 meses',
+        'Suscripción anual',
+        'No suscribirse',
       ],
       checkbox: false,
     }),

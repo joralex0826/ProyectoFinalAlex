@@ -28,6 +28,24 @@ const routes = [
     name: 'Tabla',
 
     component: () => import(/* webpackChunkName: "about" */ '../views/Tabla.vue')
+  },
+  {
+    path: '/inicio',
+    name: 'Inicio',
+
+    component: () => import(/* webpackChunkName: "about" */ '../views/Inicio.vue')
+  },
+  {
+    path: '/carrusel',
+    name: 'Carrusel',
+
+    component: () => import(/* webpackChunkName: "about" */ '../views/Carrusel.vue')
+  },
+  {
+    path: '/conocenos',
+    name: 'Conocenos',
+
+    component: () => import(/* webpackChunkName: "about" */ '../views/Conocenos.vue')
   }
 ]
 

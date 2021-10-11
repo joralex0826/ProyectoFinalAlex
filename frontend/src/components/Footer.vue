@@ -11,7 +11,7 @@
       flat
       tile
     >
-      <v-card-title class="grey darken-3">
+      <v-card-title class="black">
         <strong class="subheading">Contáctanos:     3219088245</strong>
 
         <v-spacer></v-spacer>
@@ -22,6 +22,7 @@
           class="mx-4"
           dark
           icon
+          href="https://stackoverflow.com/questions/45638239/enclosing-a-router-link-tag-in-a-button-in-vuejs"
         >
           <v-icon size="24px">
             {{ icon }}
@@ -29,7 +30,7 @@
         </v-btn>
       </v-card-title>
 
-      <v-card-text class="py-2 white--text text-center">
+      <v-card-text class="black py-2 white--text text-center">
         {{ new Date().getFullYear() }} — <strong>Misión Tic</strong>
       </v-card-text>
     </v-card>
@@ -45,6 +46,12 @@
         'mdi-linkedin',
         'mdi-instagram',
       ],
+      enlaces: [
+        "https://www.facebook.com/",
+        "https://twitter.com/home",
+        "https://www.linkedin.com/feed/",
+        "https://www.instagram.com/alexander_faj/?hl=es-la",
+      ]
     }),
   }
 </script>

@@ -16,6 +16,7 @@
 import Barra from './components/Barra.vue'
 import Footer from './components/Footer.vue'
 
+
 export default {
   name: 'App',
   components:{
