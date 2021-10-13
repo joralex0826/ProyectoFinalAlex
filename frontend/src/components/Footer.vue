@@ -22,11 +22,13 @@
           class="mx-4"
           dark
           icon
-          href="https://stackoverflow.com/questions/45638239/enclosing-a-router-link-tag-in-a-button-in-vuejs"
+          
+          
         >
-          <v-icon size="24px">
+         <a :href="icon.url" :target="icon.target"><v-icon size="24px" color="white">{{ icon.name }}</v-icon></a>
+          <!-- <v-icon size="24px">
             {{ icon }}
-          </v-icon>
+          </v-icon> -->   
         </v-btn>
       </v-card-title>
 
@@ -41,17 +43,27 @@
   export default {
     data: () => ({
       icons: [
-        'mdi-facebook',
-        'mdi-twitter',
-        'mdi-linkedin',
-        'mdi-instagram',
+        {
+            name:'mdi-github',
+            url: 'https://github.com/joralex0826',
+            target: '_blank'
+        },
+        {
+            name:'mdi-linkedin',
+            url: 'https://www.linkedin.com/in/jorge-alexander-fajardo-mu%C3%B1oz-bb813b214/',
+            target: '_blank'
+        },
+        {
+            name:'mdi-instagram',
+            url: 'https://www.instagram.com/alexander_faj/?hl=es-la',
+            target: '_blank'
+        }
+        // 'mdi-facebook',
+        // 'mdi-twitter',
+        // 'mdi-linkedin',
+        // 'mdi-instagram',
+       
       ],
-      enlaces: [
-        "https://www.facebook.com/",
-        "https://twitter.com/home",
-        "https://www.linkedin.com/feed/",
-        "https://www.instagram.com/alexander_faj/?hl=es-la",
-      ]
     }),
   }
 </script>

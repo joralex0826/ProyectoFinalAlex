@@ -7,11 +7,11 @@ const path = require('path');
 const app = express();
 
 //Conexión bd
-const moongose = require('mongoose')
+const mongoose = require('mongoose')
 const url = 'mongodb://localhost:27017/primerBd'
 const options = {useNewUrlParser: true, useUnifiedTopology: true};
 
-moongose.connect(url, options).then(
+mongoose.connect(url, options).then(
     ()=>{console.log('Conectado a mongo')},
     err => {err}
 );
