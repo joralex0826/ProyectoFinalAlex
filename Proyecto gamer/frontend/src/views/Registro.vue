@@ -63,25 +63,61 @@ export default {
 
    methods:{
       agregarArticulo(){
+
         console.log(this.atributos);
 
-        this.axios
+        if(!this.atributos.nombre){
+
+          this.$swal(`Error!`,'Falta nombre de artículo','error');
+          
+        }
+
+
+        else if(!this.atributos.categoria){
+
+          this.$swal(`Error!`,'Falta categoría de artículo','error');
+          
+        }
+
+
+        else if(!this.atributos.cantidad){
+
+          this.$swal(`Error!`,'Falta cantidad de artículos','error');
+          
+        }
+
+
+
+
+
+
+        else{
+                  this.axios
         .post("/nuevo-registro",this.atributos)
         .then((res)=>{
           this.Atributos.push(res.data);
+
+
+
+          this.$swal(`success!`,'Se agregó el artículo correctamente','success');
+
+
           this.atributos.nombre ="";
           this.atributos.categoria ="";
           this.atributos.cantidad ="";
-          alert("Su pedido se ha enviado correctamente")
+          
         })
 
         .catch((e)=>{
           
           console.log(e.response);
 
-          alert("Error en guardar registro")
+          alert("Error en guardar registro");
 
         })
+        }     
+
+
       },
     }
 

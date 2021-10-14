@@ -37,9 +37,9 @@
       <template v-slot:extension>
         <v-tabs align-with-title>
           <v-tab @click="llamarInicio()" >Inicio</v-tab>
-          <v-tab @click="llamarTabla()"> Productos </v-tab>
+          <v-tab @click="llamarTabla()"> Carrito </v-tab>
           <v-tab @click="llamarCarrusel()"> Galeria </v-tab>
-          <v-tab @click="llamarRegistro()"> Registrarse</v-tab>
+          <v-tab @click="llamarRegistro()"> Pide tus productos</v-tab>
           <v-tab @click="llamarConocenos()"> Conócenos </v-tab>
         </v-tabs>
       </template>

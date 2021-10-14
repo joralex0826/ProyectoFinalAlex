@@ -47,8 +47,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.name"
-                      label="Dessert name"
+                      v-model="editedItem.nombre"
+                      label="Nombre de artículo"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -57,8 +57,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.calories"
-                      label="Calories"
+                      v-model="editedItem.categoria"
+                      label="Categoría"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -67,8 +67,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.fat"
-                      label="Fat (g)"
+                      v-model="editedItem.cantidad"
+                      label="Cantidad"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -76,20 +76,7 @@
                     sm="6"
                     md="4"
                   >
-                    <v-text-field
-                      v-model="editedItem.carbs"
-                      label="Carbs (g)"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.protein"
-                      label="Protein (g)"
-                    ></v-text-field>
+                 
                   </v-col>
                 </v-row>
               </v-container>
@@ -102,14 +89,14 @@
                 text
                 @click="close"
               >
-                Cancel
+                Cancelar
               </v-btn>
               <v-btn
                 color="blue darken-1"
                 text
-                @click="save"
+                @click="editarArticulo(editedItem)"
               >
-                Save
+                Modificar
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -131,13 +118,13 @@
       <v-icon
         small
         class="mr-2"
-        @click="editItem(item)"
+        @click="editItem(item._id)"
       >
         mdi-pencil
       </v-icon>
       <v-icon
         small
-        @click="deleteItem(item)"
+        @click="eliminarArticulo(item._id)"
       >
         mdi-delete
       </v-icon>
@@ -164,22 +151,14 @@
         { text: 'Nombre del artículo', value: 'nombre' },
         { text: 'Categoria', value: 'categoria' },
         { text: 'Cantidad', value: 'cantidad' },
+        { text: 'Acciones', value: 'actions', sortable: false},
+        
       ],
       desserts: [],
       editedIndex: -1,
-      editedItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0,
-      },
+      editedItem: [],
       defaultItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0,
+       
       },
     }),
 
@@ -206,16 +185,15 @@
     methods: {
       initialize () {
         
-
-
-
-
       },
 
       editItem (item) {
-        this.editedIndex = this.desserts.indexOf(item)
-        this.editedItem = Object.assign({}, item)
         this.dialog = true
+        console.log(item);
+        this.axios.get(`buscarParametro/${item}`)
+        .then(res=>{
+          this.editedItem=res.data
+        })
       },
 
       deleteItem (item) {
@@ -262,7 +240,43 @@
         .catch((e)=>{
           console.log('error'+e)
         })
+      },
+
+      editarArticulo(item){
+
+        
+        this.axios.put(`/actualizar/${item._id}`,item)
+        .then(res=>{
+          const index = this.desserts.findindex(n=>n._id === res.data._id)
+          this.desserts[index].nombre = res.data.nombre;
+          this.desserts[index].categoria = res.data.categoria;
+          this.desserts[index].cantidad = res.data.cantidad;
+
+        }).catch(e=>{
+        console.log(e.response)
+      })
+
+
+      },
+
+      eliminarArticulo(id){
+
+        console.log(id);
+        this.axios.delete(`/eliminarParametro/${id}`)
+        .then(res=>{
+          const index = this.desserts.findIndex(item=>item._id === res.data._id)
+          this.desserts.splice(index,1);
+          this.editedIndex = this.desserts.indexOf(item);
+          this.editedItem = Object.assign({},item)
+
+
+        }).catch(e=>{
+          console.log(e.response)
+        })
+
       }
+
+     
     },
   }
 </script>
